@@ -1,7 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 //unique id npm package
-const { uuid } = require('uuid');
+const {v4 : uuidv4} = require('uuidv4')
 
 module.exports = (app) => {
     app.get("/api/notes", (req, res) => {
