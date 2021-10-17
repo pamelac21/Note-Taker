@@ -1,6 +1,6 @@
 const fs = require("fs");
 const path = require("path");
-const noteArray = require("../db/db.json");
+const noteArray = require("../Develop/db/db.json");
 //unique id npm package
 const { uuid } = require("uuidv4");
 
@@ -17,7 +17,7 @@ module.exports = (app) => {
     };
 
     console.log(newNote);
-    const file = path.join(__dirname, "../db/db.json");
+    const file = path.join(__dirname, "../Develop/db/db.json");
 
     noteArray.push(newNote);
 
@@ -32,7 +32,7 @@ module.exports = (app) => {
   app.delete("/api/notes/:id", (req, res) => {
     res.send("DELETE Request Called");
     const id = req.params.id;
-    const file = path.join(__dirname, "../db/db.json");
+    const file = path.join(__dirname, "../Develop/db/db.json");
 
     for (const note of noteArray) {
       if (id === note.id) {
