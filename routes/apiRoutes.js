@@ -2,7 +2,7 @@ const fs = require("fs");
 const path = require("path");
 const noteArray = require("../Develop/db/db.json");
 //unique id npm package
-const { uuid } = require("uuidv4");
+const { v4: uuidv4 } = require('uuid');
 
 module.exports = (app) => {
   app.get("/api/notes", (req, res) => {
@@ -17,7 +17,7 @@ module.exports = (app) => {
     };
 
     console.log(newNote);
-    const file = path.join(__dirname, "../Develop/db/db.json");
+    const file = path.join(__dirname, "../Develop/db/db.json", 'utf8');
 
     noteArray.push(newNote);
 
