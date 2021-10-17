@@ -4,6 +4,7 @@ const noteArray = require("../Develop/db/db.json");
 //unique id npm package
 const { v4: uuidv4 } = require('uuid');
 
+
 module.exports = (app) => {
   app.get("/api/notes", (req, res) => {
     res.json(noteArray);
@@ -11,7 +12,7 @@ module.exports = (app) => {
 
   app.post("/api/notes", (req, res) => {
     const newNote = {
-      id: uuid(),
+      id: uuidv4(),
       title: req.body.title,
       text: req.body.text,
     };
