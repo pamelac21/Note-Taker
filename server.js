@@ -20,4 +20,5 @@ app.listen(PORT, function() {
 /*
 Creating app... done, ⬢ salty-chamber-17307
 https://salty-chamber-17307.herokuapp.com/ | https://git.heroku.com/salty-chamber-17307.git
+http://localhost:3000
 */

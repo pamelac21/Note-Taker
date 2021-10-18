@@ -29,22 +29,4 @@ module.exports = (app) => {
 
     res.send(newNote);
   });
-
-  app.delete("/api/notes/:id", (req, res) => {
-    res.send("DELETE Request Called");
-    const id = req.params.id;
-    const file = path.join(__dirname, "../Develop/db/db.json");
-
-    for (const note of notesArray) {
-      if (id === note.id) {
-        const index = notesArray.indexOf(note);
-        notesArray.splice(index, 1);
-        fs.writeFile(file, JSON.stringify(notesArray, null, 4), (err) => {
-          if (err) throw err;
-          console.log("Note deleted!");
-        });
-        res.end();
-      }
-    }
-  });
-};
+}
