@@ -1,13 +1,14 @@
 const fs = require("fs");
 const path = require("path");
-const notesArray = require("../Develop/db/db.json");
+//const notesArray = require("../Develop/db/db.json");
 //unique id npm package
 const { v4: uuidv4 } = require('uuid');
 
 
 module.exports = (app) => {
   app.get("/api/notes", (req, res) => {
-    res.json(notesArray);
+    let data = JSON.parse(fs.readFileSync("../Develop/db/db.json", "utf8"));
+    res.json(data);
   });
 
   app.post("/api/notes", (req, res) => {
@@ -16,17 +17,23 @@ module.exports = (app) => {
       title: req.body.title,
       text: req.body.text,
     };
+    let data = JSON.parse(fs.readFileSync("../Develop/db/db.json", "utf8"));
+    data.push(newNote);
+    fs.writeFileSync('../Develop/db/db.json', JSON.stringify(data));
+    res.json(data);
+  })
 
-    console.log(newNote);
-    const file = path.join(__dirname, "../Develop/db/db.json", 'utf8');
 
-    notesArray.push(newNote);
+app.delete("/api/notes/:id", (req, res) => {
 
-    fs.writeFile(file, JSON.stringify(notesArray, null, 4), (err) => {
-      if (err) throw err;
-      console.log("New note has been saved!");
-    });
+  let noteId = req.params.id.toString();
+  let data = JSON.parse(fs.readFileSync("../Develop/db/db.json", "utf8"));
+  const newData = data.filter( note => note.id.toString() !== noteId );
+  fs.writeFileSync('../Develop/db/db.json', JSON.stringify(newData));
+  res.json(newData);
+});
 
-    res.send(newNote);
-  });
+
+
 }
+
