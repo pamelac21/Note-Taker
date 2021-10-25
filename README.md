@@ -15,7 +15,9 @@ Run `npm i` to install all dependencies. To use the application locally, run `np
 
 [Heroku link](https://salty-chamber-17307.herokuapp.com/)
 
-GIF HERE
+![NoteTakerEXgif](https://user-images.githubusercontent.com/87335354/138624936-729768d5-c365-450a-9e68-77424a2a8090.gif)
+
+[full video](https://watch.screencastify.com/v/STPLaDMM8tQpDPpLW1SS)
 
 ## Built With
 
