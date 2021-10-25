@@ -1,12 +1,10 @@
 const fs = require("fs");
-const path = require("path");
-//const notesArray = require("../Develop/db/db.json");
+
 //unique id npm package
 const { v4: uuidv4 } = require('uuid');
 
 
 module.exports = function(app) {
-  function dbWrite() {
 
   app.get("/api/notes", (req, res) => {
     let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
@@ -14,7 +12,7 @@ module.exports = function(app) {
   });
 
   app.post("/api/notes", (req, res) => {
-    const newNote = request.body;
+    const newNote = req.body;
       newNote.id = uuidv4();
 
     let data = JSON.parse(fs.readFileSync("./db/db.json", "utf8"));
@@ -33,7 +31,3 @@ module.exports = function(app) {
     res.json(newData);
   });
   }
-  dbWrite()
-
-
-}
