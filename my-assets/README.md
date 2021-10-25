@@ -1,6 +1,4 @@
 # 11 Express.js: Note Taker
- 
-:: Currently awaiting appointment for help with error. ::
 
 
 ## Your Task
